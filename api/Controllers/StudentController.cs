@@ -67,7 +67,7 @@ namespace StudentApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetStudentById(int id)
         {
-            Student student = null;
+            Student? student = null;
 
             using (MySqlConnection conn = new MySqlConnection(_connectionString))
             {
@@ -184,7 +184,7 @@ namespace StudentApi.Controllers
                     MySqlCommand selectCmd = new MySqlCommand(selectQuery, conn);
                     selectCmd.Parameters.AddWithValue("@id", id);
 
-                    Student existingStudent = null;
+                    Student? existingStudent = null;
                     using (var reader = selectCmd.ExecuteReader())
                     {
                         if (reader.Read())
